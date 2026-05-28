@@ -32,13 +32,15 @@
 
   <div style="font-weight:700; color:#1E5A7A; margin:12px 0 6px 0;">Limitations</div>
   <p style="margin:0 0 8px 0; font-size:12px; color:#333; line-height:1.6;">
-    All three approaches depend on the quality and completeness of their input data. Results should be interpreted with that in mind.
+    Results depend on input data quality and are time-independent. Always interpret them in context.
   </p>
   <ul style="margin:0 0 10px 18px; padding:0; font-size:12px; color:#333; line-height:1.6;">
-    <li><b>Euclidean (straight-line)</b>: the results can be less meaningful where terrain is complex or where road coverage is sparse, because it assumes frictionless travel in a straight line.</li>
-    <li><b>Road network (QNEAT3)</b>: relies on the completeness of the OpenStreetMap road network. In rural areas, informal paths/tracks may be missing from OSM. Where a village cannot be connected to any road, QNEAT3 returns <b>null</b>—this does not necessarily mean the village is physically isolated, only that no mapped road reaches it.</li>
-    <li><b>LCP (AccessMod)</b>: sensitive to the DEM resolution (e.g., SRTM ~90 m) and the accuracy of the land cover and barrier layers used in AccessMod. A village located on a mapped barrier may return <b>null</b> because the algorithm cannot compute a cost surface from an impassable origin point. LCP also does not account for road quality, seasonal effects (e.g., flooding), or the actual mode of transport used.</li>
-    <li><b>Static analysis</b>: the assessment is time-independent and does not capture temporal variation such as seasonal road degradation during the rainy season.</li>
+    <li><b>Euclidean</b>: may underestimate travel where roads/terrain matter.</li>
+    <li><b>QNEAT3</b>: if OSM roads are missing, some villages may appear unreachable (<b>null</b>).</li>
+    <li><b>AccessMod LCP</b>: sensitive to DEM + land cover/barriers; <b>null</b> can occur on impassable barriers.</li>
+    <li><b>Static</b>: does not capture seasonal/access changes over time.</li>
   </ul>
 </div>
+
+
 
