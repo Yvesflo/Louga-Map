@@ -1,0 +1,16 @@
+{
+"type": "FeatureCollection",
+"name": "Centredesante_louga",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Name": null, "REGION_MED": "LOUGA", "DISTRICT": "DAROU MOUSTY", "TYPE_STRUC": "CS", "X": 376951.0536, "Y": 1658238.989 }, "geometry": { "type": "Point", "coordinates": [ -16.144476, 14.996338, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Cen-tre de Santé de Sakal", "REGION_MED": null, "DISTRICT": null, "TYPE_STRUC": "CS", "X": 369247.8691, "Y": 1750464.788 }, "geometry": { "type": "Point", "coordinates": [ -16.22097, 15.829581, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Centre de santé", "REGION_MED": "LOUGA", "DISTRICT": "DAHRA", "TYPE_STRUC": "CS", "X": 370252.981, "Y": 1689108.043 }, "geometry": { "type": "Point", "coordinates": [ -16.208346, 15.275045, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Centre de santé de Dahra", "REGION_MED": null, "DISTRICT": null, "TYPE_STRUC": "CS", "X": 449576.8847, "Y": 1696698.868 }, "geometry": { "type": "Point", "coordinates": [ -15.46978, 15.346438, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Centre de santé de Darou mousti", "REGION_MED": "LOUGA", "DISTRICT": "DAROU MOUSTY", "TYPE_STRUC": "CS", "X": 387714.9967, "Y": 1663172.006 }, "geometry": { "type": "Point", "coordinates": [ -16.04459, 15.041412, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Centre de santé de Dodji", "REGION_MED": null, "DISTRICT": null, "TYPE_STRUC": "CS", "X": 505325.7285, "Y": 1717571.735 }, "geometry": { "type": "Point", "coordinates": [ -14.950336, 15.535636, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Centre de santé de Kébémer", "REGION_MED": "LOUGA", "DISTRICT": "KEBEMER", "TYPE_STRUC": "CS", "X": 346216.7238, "Y": 1699643.858 }, "geometry": { "type": "Point", "coordinates": [ -16.4328, 15.36895, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Centre de santé de Linguère", "REGION_MED": "LOUGA", "DISTRICT": "LINGUERE", "TYPE_STRUC": "CS", "X": 487736.9447, "Y": 1702337.418 }, "geometry": { "type": "Point", "coordinates": [ -15.114281, 15.397881, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Centre de santé de Louga", "REGION_MED": "LOUGA", "DISTRICT": "LOUGA", "TYPE_STRUC": "CS", "X": 367059.1037, "Y": 1728394.212 }, "geometry": { "type": "Point", "coordinates": [ -16.240196, 15.62998, 0.0 ] } }
+]
+}

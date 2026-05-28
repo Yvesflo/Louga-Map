@@ -1,0 +1,44 @@
+<div style="margin-top:10px; font-size:12px; color:#333; line-height:1.6;">
+  <div style="font-weight:700; color:#1E5A7A; margin-bottom:6px;">About / À propos</div>
+  <p style="margin:0 0 8px 0;">
+    This platform compares <b>three approaches</b> to measure geographic accessibility from <b>villages</b> to the nearest
+    <b>Case de Santé</b> (health centre), all applied within a <b>10 km buffer</b> around each facility.
+  </p>
+
+  <ol style="margin:0 0 8px 18px; padding:0;">
+    <li>
+      <b>Euclidean (straight-line) distance</b> (QGIS Distance Matrix): the simplest and fastest measure. It ignores the
+      road network, so it often <b>underestimates real travel distances</b>.
+    </li>
+    <li style="margin-top:6px;">
+      <b>Road network distance</b> (QNEAT3): instead of a straight line, it routes each village to its nearest facility
+      along the <b>actual road network</b> using Dijkstra’s shortest path. The difference vs Euclidean reflects the
+      cost added by road geometry.
+    </li>
+    <li style="margin-top:6px;">
+      <b>LCP (Least Cost Path)</b> (AccessMod): accounts for terrain using a Digital Elevation Model (SRTM) to model
+      how slope and land cover affect movement. It also considers natural barriers (rivers, wetlands, relief features)
+      that must be skirted around. This generally produces the <b>most realistic travel effort</b>.
+    </li>
+  </ol>
+
+  <div style="font-weight:700; color:#1E5A7A; margin:10px 0 6px 0;">How to navigate</div>
+  <ul style="margin:0 0 10px 18px; padding:0;">
+    <li><b>Toggle techniques</b>: use the “View / Vue” radio buttons to switch between Euclidien, Road network and LCP.</li>
+    <li><b>Filter by distance</b>: move the “Max distance” slider to show villages whose nearest access is within the selected threshold.</li>
+    <li><b>Legend</b>: click distance bands in the legend to show/hide them on the map.</li>
+    <li><b>Search</b>: type a village/admin name in the search box, then click a result to fly to it.</li>
+  </ul>
+
+  <div style="font-weight:700; color:#1E5A7A; margin:12px 0 6px 0;">Limitations</div>
+  <p style="margin:0 0 8px 0; font-size:12px; color:#333; line-height:1.6;">
+    All three approaches depend on the quality and completeness of their input data. Results should be interpreted with that in mind.
+  </p>
+  <ul style="margin:0 0 10px 18px; padding:0; font-size:12px; color:#333; line-height:1.6;">
+    <li><b>Euclidean (straight-line)</b>: the results can be less meaningful where terrain is complex or where road coverage is sparse, because it assumes frictionless travel in a straight line.</li>
+    <li><b>Road network (QNEAT3)</b>: relies on the completeness of the OpenStreetMap road network. In rural areas, informal paths/tracks may be missing from OSM. Where a village cannot be connected to any road, QNEAT3 returns <b>null</b>—this does not necessarily mean the village is physically isolated, only that no mapped road reaches it.</li>
+    <li><b>LCP (AccessMod)</b>: sensitive to the DEM resolution (e.g., SRTM ~90 m) and the accuracy of the land cover and barrier layers used in AccessMod. A village located on a mapped barrier may return <b>null</b> because the algorithm cannot compute a cost surface from an impassable origin point. LCP also does not account for road quality, seasonal effects (e.g., flooding), or the actual mode of transport used.</li>
+    <li><b>Static analysis</b>: the assessment is time-independent and does not capture temporal variation such as seasonal road degradation during the rainy season.</li>
+  </ul>
+</div>
+

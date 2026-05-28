@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Distance villages – RN (Road Network) · Louga, Sénégal · 2023</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <img src="AMUlogo.png" alt="Logo"/>
+    <div class="header-text">
+      <h1>Distance from Villages to the Nearest Health Centre (Road Network) within 100 km – Louga, 2023</h1>
+      <span>Distance entre les villages et le centre de santé le plus proche (réseau routier) · Région de Louga, Sénégal · 2023</span>
+    </div>
+  </header>
+
+  <main>
+    <div id="sidebar">
+      <div class="section">
+        <h3>🔍 Search / Recherche</h3>
+        <div id="searchBox" style="position:relative">
+          <input id="searchInput" type="text"
+            placeholder="Village, département, région..."
+            style="width:100%;padding:7px 10px;border:1px solid #ccc;border-radius:6px;font-size:12px;box-sizing:border-box"/>
+          <div id="searchResults"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>📊 Statistics / Statistiques</h3>
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-num" id="s-total">--</div><div class="stat-lbl">Villages couverts / Covered</div></div>
+          <div class="stat-box"><div class="stat-num" id="s-centres">--</div><div class="stat-lbl">Centres de santé</div></div>
+          <div class="stat-box"><div class="stat-num" id="s-uncovered">--</div><div class="stat-lbl">Non couverts / Uncovered</div></div>
+          <div class="stat-box"><div class="stat-num" id="s-avg">--</div><div class="stat-lbl">Avg. distance (km)</div></div>
+        </div>
+        <div id="chartWrap"><canvas id="distChart" height="140"></canvas></div>
+      </div>
+
+      <div class="section">
+        <h3>🎚️ Filter / Filtre</h3>
+        <div class="filter-label">Max distance : <span class="range-val" id="rangeVal">100</span> km</div>
+        <input type="range" id="distFilter" min="1" max="100" value="100" step="0.5"/>
+        <div class="range-ends"><span>1 km</span><span>100 km</span></div>
+      </div>
+
+      <div class="section">
+        <h3>🗂️ Legend / Légende</h3>
+        <div id="legend"></div>
+        <div class="legend-item" style="margin-top:8px">
+          <div class="legend-centre"></div>
+          <span>Centre de santé</span>
+        </div>
+        <div class="legend-item" style="margin-top:6px">
+          <div class="dot" style="background:#bbb;border:1px solid #999"></div>
+          <span>Village non couvert / Uncovered</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>🗺️ Layers / Couches</h3>
+        <label class="toggle-row">
+          <input type="checkbox" id="tog-buffer" checked/>
+          Villages couverts / Covered
+        </label>
+        <label class="toggle-row">
+          <input type="checkbox" id="tog-uncovered"/>
+          Villages non couverts / Uncovered ⚠️
+        </label>
+        <label class="toggle-row">
+          <input type="checkbox" id="tog-centres" checked/>
+          Centres de santé 🏥
+        </label>
+        <label class="toggle-row">
+          <input type="checkbox" id="tog-boundary" checked/>
+          Limite région / Boundary
+        </label>
+      </div>
+
+      <div class="section">
+        <h3>⬇️ Download / Télécharger</h3>
+        <button class="dl-btn" id="btn-png">� Capture écran PNG</button>
+        <button class="dl-btn" id="btn-pdf">🖨️ Imprimer / PDF</button>
+        <button class="dl-btn dl-btn-green" id="btn-csv">📊 Télécharger données CSV</button>
+      </div>
+
+      <div class="section credits">
+        © AMU, 2024. Yves Wasnyo<br/>
+        Source: OSM, Healthsites, 2023
+      </div>
+    </div>
+
+    <div id="map"></div>
+  </main>
+
+  <div id="print-header">
+    <div class="ph-title">Distance from Villages to the Nearest Health Centre (Road Network) within 100 km – Louga, 2023</div>
+    <div class="ph-sub">Distance entre les villages et le centre de santé le plus proche (réseau routier) · Région de Louga, Sénégal · 2023</div>
+    <div class="ph-credits">Auteur : Yves Wasnyo · AMU © 2024 · Source : OSM, Healthsites · <span id="print-date"></span></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="map_rn.js"></script>
+</body>
+</html>
+
