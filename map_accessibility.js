@@ -19,7 +19,16 @@ function coordsToKey(pt) {
 }
 
 // ── MAP INIT ───────────────────────────────────────────────────────────────
-const map = L.map('map', { center: [15.55, -15.8], zoom: 9, zoomAnimation: true });
+const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+const map = L.map('map', {
+  center: [15.55, -15.8],
+  zoom: 9,
+  zoomAnimation: true,
+  tap: isTouch,
+  touchZoom: true,
+  scrollWheelZoom: true,
+  dragging: true
+});
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap contributors', maxZoom: 19,
@@ -177,16 +186,18 @@ function renderBufferVillages() {
       fillOpacity: 0.9,
     });
 
-    marker.on('mouseover', function () {
-      this.setStyle({ radius: 9, weight: 1.5 });
-      this.bindTooltip(`<b>${v.village}</b><br>📍 ${v.distKm.toFixed(1)} km → ${v.centre || 'Centre inconnu'}`,
-        { sticky: true, offset: [10, -5] }).openTooltip();
-    });
+    if (!isTouch) {
+      marker.on('mouseover', function () {
+        this.setStyle({ radius: 9, weight: 1.5 });
+        this.bindTooltip(`<b>${v.village}</b><br>📍 ${v.distKm.toFixed(1)} km → ${v.centre || 'Centre inconnu'}`,
+          { sticky: true, offset: [10, -5] }).openTooltip();
+      });
 
-    marker.on('mouseout', function () {
-      this.setStyle({ radius: 6, weight: 0.8 });
-      this.closeTooltip();
-    });
+      marker.on('mouseout', function () {
+        this.setStyle({ radius: 6, weight: 0.8 });
+        this.closeTooltip();
+      });
+    }
 
     marker.on('click', function () {
       marker.bindPopup(`

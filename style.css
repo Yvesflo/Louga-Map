@@ -511,3 +511,36 @@ input[type=range] { width: 100%; accent-color: #1E5A7A; }
     font-family: Arial, sans-serif;
   }
 }
+
+/* ── RESPONSIVE (TABLET / PHONE) ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  header { padding: 10px 12px; }
+  .header-text h1 { font-size: 14px; }
+  .header-text span { display: none; }
+
+  main { flex-direction: column; }
+
+  /* Sidebar becomes a top panel with limited height */
+  #sidebar {
+    width: 100%;
+    min-width: unset;
+    max-height: 40vh;
+    overflow-y: auto;
+    box-shadow: none;
+    border-left: none;
+  }
+
+  /* Map below the sidebar; ensure usable height */
+  #map {
+    height: calc(100vh - 56px - 40vh);
+    min-height: 50vh;
+  }
+
+  .section { padding: 10px; }
+  .dl-btn { padding: 10px 12px; font-size: 14px; }
+  .search-item { padding: 12px 14px; font-size: 14px; }
+  .stat-num { font-size: 18px; }
+  .toggle-row { font-size: 14px; }
+
+  #searchResults { max-height: 36vh; }
+}
