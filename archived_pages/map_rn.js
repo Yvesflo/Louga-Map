@@ -69,10 +69,10 @@ let chart        = null;
 
 // ── LOAD GEOJSON (RN technique only) ──────────────────────────────────────────
 Promise.all([
-  fetch('layers/RN_DistanceMatrix_Louga.geojson').then(r => r.json()),
-  fetch('layers/Villages_all.geojson').then(r => r.json()),
-  fetch('layers/Limites_louga.geojson').then(r => r.json()),
-  fetch('layers/Centredesante_louga.geojson').then(r => r.json()),
+  fetch('Layers/RN_DistanceMatrix_Louga.geojson').then(r => r.json()),
+  fetch('Layers/Villages_all.geojson').then(r => r.json()),
+  fetch('Layers/Limites_louga.geojson').then(r => r.json()),
+  fetch('Layers/Centredesante_louga.geojson').then(r => r.json()),
 ])
 .then(([distMatrix, villagesAll, boundary, centres]) => {
   // 1. Boundary
@@ -213,7 +213,7 @@ Promise.all([
 })
 .catch(err => {
   console.error('Error loading GeoJSON files:', err);
-  alert('Error loading data. Make sure Live Server is running and files are in the layers/ folder.');
+  alert('Error loading data. Make sure Live Server is running and files are in the Layers/ folder.');
 });
 
 function renderBufferVillages() {
